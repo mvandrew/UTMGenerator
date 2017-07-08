@@ -1,5 +1,5 @@
-# UTM Generator
-UTM tags Generator for various traffic sources.
+# UTM terms Generator
+UTM terms Generator for various traffic sources.
 
 At the current stage of development, the project is localized only in Russian.
 
@@ -17,4 +17,4 @@ At the current stage of development, the project is localized only in Russian.
 
 ## Options
 * Transliteration is supported for the Cyrillic code page.
-* You can additionally add custom tags and subid.
+* You can additionally add custom terms and subid.
