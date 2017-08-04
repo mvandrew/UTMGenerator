@@ -73,6 +73,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="ClassDiagramForms.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -91,6 +92,12 @@
     <None Include="Resources\Copy-icon.png" />
     <None Include="Resources\Refresh-icon.png" />
     <None Include="Resources\Next-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UTMGeneratorLibrary\UTMGeneratorLibrary.csproj">
+      <Project>{0a2869e3-c07d-4164-af7c-0f409abaf6df}</Project>
+      <Name>UTMGeneratorLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

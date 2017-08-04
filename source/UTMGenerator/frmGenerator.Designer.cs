@@ -73,8 +73,6 @@
             this.tbUTMAdditional = new System.Windows.Forms.TextBox();
             this.lbUTMAdditional = new System.Windows.Forms.Label();
             this.gbOptions = new System.Windows.Forms.GroupBox();
-            this.lbIncludeUTMTermHint = new System.Windows.Forms.Label();
-            this.cbIncludeUTMTerm = new System.Windows.Forms.CheckBox();
             this.cbSlashPlaceHint = new System.Windows.Forms.Label();
             this.cbSlashPlace = new System.Windows.Forms.CheckBox();
             this.lbTransliterationHint = new System.Windows.Forms.Label();
@@ -109,6 +107,7 @@
             this.tbURL.Name = "tbURL";
             this.tbURL.Size = new System.Drawing.Size(709, 20);
             this.tbURL.TabIndex = 1;
+            this.tbURL.TextChanged += new System.EventHandler(this.tbURL_TextChanged);
             // 
             // gbSource
             // 
@@ -562,41 +561,16 @@
             // 
             // gbOptions
             // 
-            this.gbOptions.Controls.Add(this.lbIncludeUTMTermHint);
-            this.gbOptions.Controls.Add(this.cbIncludeUTMTerm);
             this.gbOptions.Controls.Add(this.cbSlashPlaceHint);
             this.gbOptions.Controls.Add(this.cbSlashPlace);
             this.gbOptions.Controls.Add(this.lbTransliterationHint);
             this.gbOptions.Controls.Add(this.cbTransliteration);
             this.gbOptions.Location = new System.Drawing.Point(15, 355);
             this.gbOptions.Name = "gbOptions";
-            this.gbOptions.Size = new System.Drawing.Size(288, 213);
+            this.gbOptions.Size = new System.Drawing.Size(288, 173);
             this.gbOptions.TabIndex = 23;
             this.gbOptions.TabStop = false;
             this.gbOptions.Text = "Параметры формирования";
-            // 
-            // lbIncludeUTMTermHint
-            // 
-            this.lbIncludeUTMTermHint.AutoSize = true;
-            this.lbIncludeUTMTermHint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbIncludeUTMTermHint.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lbIncludeUTMTermHint.Location = new System.Drawing.Point(3, 189);
-            this.lbIncludeUTMTermHint.Name = "lbIncludeUTMTermHint";
-            this.lbIncludeUTMTermHint.Size = new System.Drawing.Size(163, 13);
-            this.lbIncludeUTMTermHint.TabIndex = 27;
-            this.lbIncludeUTMTermHint.Text = "Не работает в Google AdWords";
-            // 
-            // cbIncludeUTMTerm
-            // 
-            this.cbIncludeUTMTerm.AutoSize = true;
-            this.cbIncludeUTMTerm.Checked = true;
-            this.cbIncludeUTMTerm.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbIncludeUTMTerm.Location = new System.Drawing.Point(6, 169);
-            this.cbIncludeUTMTerm.Name = "cbIncludeUTMTerm";
-            this.cbIncludeUTMTerm.Size = new System.Drawing.Size(160, 17);
-            this.cbIncludeUTMTerm.TabIndex = 26;
-            this.cbIncludeUTMTerm.Text = "Включать ключевое слово";
-            this.cbIncludeUTMTerm.UseVisualStyleBackColor = true;
             // 
             // cbSlashPlaceHint
             // 
@@ -651,7 +625,7 @@
             this.gbAdditionalTemplates.Controls.Add(this.lbAdditionalTemplatesList);
             this.gbAdditionalTemplates.Location = new System.Drawing.Point(312, 401);
             this.gbAdditionalTemplates.Name = "gbAdditionalTemplates";
-            this.gbAdditionalTemplates.Size = new System.Drawing.Size(412, 167);
+            this.gbAdditionalTemplates.Size = new System.Drawing.Size(412, 127);
             this.gbAdditionalTemplates.TabIndex = 24;
             this.gbAdditionalTemplates.TabStop = false;
             this.gbAdditionalTemplates.Text = "Шаблоны дополнительных меток";
@@ -661,19 +635,20 @@
             this.btAdditionalTemplateInclude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btAdditionalTemplateInclude.Image = global::UTMGenerator.Properties.Resources.Next_icon;
             this.btAdditionalTemplateInclude.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btAdditionalTemplateInclude.Location = new System.Drawing.Point(325, 133);
+            this.btAdditionalTemplateInclude.Location = new System.Drawing.Point(324, 91);
             this.btAdditionalTemplateInclude.Name = "btAdditionalTemplateInclude";
             this.btAdditionalTemplateInclude.Size = new System.Drawing.Size(81, 28);
             this.btAdditionalTemplateInclude.TabIndex = 2;
             this.btAdditionalTemplateInclude.Text = "Включить";
             this.btAdditionalTemplateInclude.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btAdditionalTemplateInclude.UseVisualStyleBackColor = true;
+            this.btAdditionalTemplateInclude.Click += new System.EventHandler(this.btAdditionalTemplateInclude_Click);
             // 
             // tbAdditionalTemplatesValue
             // 
             this.tbAdditionalTemplatesValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbAdditionalTemplatesValue.Location = new System.Drawing.Point(7, 136);
+            this.tbAdditionalTemplatesValue.Location = new System.Drawing.Point(6, 94);
             this.tbAdditionalTemplatesValue.Name = "tbAdditionalTemplatesValue";
             this.tbAdditionalTemplatesValue.Size = new System.Drawing.Size(312, 20);
             this.tbAdditionalTemplatesValue.TabIndex = 1;
@@ -683,19 +658,16 @@
             this.lbAdditionalTemplatesList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbAdditionalTemplatesList.FormattingEnabled = true;
-            this.lbAdditionalTemplatesList.Items.AddRange(new object[] {
-            "Регионы для Директа",
-            "Субаккаунты для M1-Shop.Ru"});
             this.lbAdditionalTemplatesList.Location = new System.Drawing.Point(7, 19);
             this.lbAdditionalTemplatesList.Name = "lbAdditionalTemplatesList";
-            this.lbAdditionalTemplatesList.Size = new System.Drawing.Size(399, 108);
+            this.lbAdditionalTemplatesList.Size = new System.Drawing.Size(399, 69);
             this.lbAdditionalTemplatesList.TabIndex = 0;
             this.lbAdditionalTemplatesList.SelectedIndexChanged += new System.EventHandler(this.lbAdditionalTemplatesList_SelectedIndexChanged);
             // 
             // lbResultURL
             // 
             this.lbResultURL.AutoSize = true;
-            this.lbResultURL.Location = new System.Drawing.Point(12, 571);
+            this.lbResultURL.Location = new System.Drawing.Point(18, 531);
             this.lbResultURL.Name = "lbResultURL";
             this.lbResultURL.Size = new System.Drawing.Size(162, 13);
             this.lbResultURL.TabIndex = 25;
@@ -706,11 +678,11 @@
             this.tbResultURL.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbResultURL.Location = new System.Drawing.Point(15, 587);
+            this.tbResultURL.Location = new System.Drawing.Point(21, 547);
             this.tbResultURL.Multiline = true;
             this.tbResultURL.Name = "tbResultURL";
             this.tbResultURL.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbResultURL.Size = new System.Drawing.Size(709, 90);
+            this.tbResultURL.Size = new System.Drawing.Size(709, 75);
             this.tbResultURL.TabIndex = 26;
             // 
             // btCopy
@@ -718,7 +690,7 @@
             this.btCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btCopy.Image = global::UTMGenerator.Properties.Resources.Copy_icon;
             this.btCopy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btCopy.Location = new System.Drawing.Point(104, 683);
+            this.btCopy.Location = new System.Drawing.Point(110, 628);
             this.btCopy.Name = "btCopy";
             this.btCopy.Size = new System.Drawing.Size(177, 28);
             this.btCopy.TabIndex = 28;
@@ -731,7 +703,7 @@
             this.btRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btRefresh.Image = global::UTMGenerator.Properties.Resources.Refresh_icon;
             this.btRefresh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btRefresh.Location = new System.Drawing.Point(15, 683);
+            this.btRefresh.Location = new System.Drawing.Point(21, 628);
             this.btRefresh.Name = "btRefresh";
             this.btRefresh.Size = new System.Drawing.Size(83, 28);
             this.btRefresh.TabIndex = 27;
@@ -743,7 +715,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(736, 722);
+            this.ClientSize = new System.Drawing.Size(736, 665);
             this.Controls.Add(this.btCopy);
             this.Controls.Add(this.btRefresh);
             this.Controls.Add(this.tbResultURL);
@@ -772,9 +744,11 @@
             this.Controls.Add(this.tbURL);
             this.Controls.Add(this.lbURL);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(752, 761);
+            this.MinimumSize = new System.Drawing.Size(752, 704);
             this.Name = "frmGenerator";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Генератор UTM-меток";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmGenerator_FormClosing);
             this.gbSource.ResumeLayout(false);
             this.gbSource.PerformLayout();
             this.gbOptions.ResumeLayout(false);
@@ -834,8 +808,6 @@
         private System.Windows.Forms.GroupBox gbOptions;
         private System.Windows.Forms.Label lbTransliterationHint;
         private System.Windows.Forms.CheckBox cbTransliteration;
-        private System.Windows.Forms.Label lbIncludeUTMTermHint;
-        private System.Windows.Forms.CheckBox cbIncludeUTMTerm;
         private System.Windows.Forms.Label cbSlashPlaceHint;
         private System.Windows.Forms.CheckBox cbSlashPlace;
         private System.Windows.Forms.GroupBox gbAdditionalTemplates;

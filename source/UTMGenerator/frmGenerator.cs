@@ -7,14 +7,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UTMGeneratorLibrary;
 
 namespace UTMGenerator
 {
     public partial class frmGenerator : Form
     {
+        /// <summary>
+        /// Generator helper class instance
+        /// </summary>
+        private GeneratorHelper generatorHelper;
+
+        /// <summary>
+        /// Form Constructor
+        /// </summary>
         public frmGenerator()
         {
             InitializeComponent();
+
+            //
+            // Load the latest settings
+            //
+            SettingsHelper settings = SettingsHelper.GetSettings();
+
+            // Process the traffic source
+            switch (settings.SourceType)
+            {
+                case SourcesTypes.YANDEX_SEARCH:
+                    rbYandexSearch.Checked = true;
+                    break;
+                case SourcesTypes.YANDEX_MEDIA:
+                    rbYandexRSYA.Checked = true;
+                    break;
+            }
+
+            tbUTMSource.Text = settings.UTMSource;
+            tbUTMMedium.Text = settings.UTMMedium;
+            tbUTMCampaign.Text = settings.UTMCampaign;
+            tbUTMContent.Text = settings.UTMContent;
+            tbUTMTerm.Text = settings.UTMTerm;
+            tbUTMAdditional.Text = settings.UTMAdditional;
+
+            cbTransliteration.Checked = settings.Transliteration;
+            cbSlashPlace.Checked = settings.SlashPlace;
+
+            tbURL.Text = settings.SiteURL;
         }
 
         private void llYandexDirect_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -67,13 +104,59 @@ namespace UTMGenerator
             System.Diagnostics.Process.Start(@"https://oblivki.biz/");
         }
 
+        /// <summary>
+        /// Additional Templates List Item Selected Index Changed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lbAdditionalTemplatesList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (lbAdditionalTemplatesList.SelectedIndex)
+            try
             {
-                case 0:
-                    tbAdditionalTemplatesValue.Text = @"&region={region_id}&region_name={region_name}";
-                    break;
+                string selectedValue =
+                lbAdditionalTemplatesList.Items[lbAdditionalTemplatesList.SelectedIndex].ToString();
+
+                tbAdditionalTemplatesValue.Text = generatorHelper.getUTMAdditionalValue(selectedValue);
+            }
+            catch { tbAdditionalTemplatesValue.Text = ""; }
+        }
+
+        /// <summary>
+        /// Creating helper class for the target trafic source.
+        /// </summary>
+        private void targetSystemChanged()
+        {
+            // Creating helper class
+            if (rbYandexSearch.Checked) { generatorHelper = new YandexSearchHelper(); }
+            else { generatorHelper = null; }
+
+            // Set default field values
+            tbAdditionalTemplatesValue.Text = "";
+            lbAdditionalTemplatesList.Items.Clear();
+            if (generatorHelper == null)
+            {
+                tbUTMSource.Text = "";
+                tbUTMMedium.Text = "";
+                tbUTMCampaign.Text = "";
+                tbUTMContent.Text = "";
+                tbUTMTerm.Text = "";
+                tbUTMAdditional.Text = "";
+            }
+            else
+            {
+                // Set default tag values
+                tbUTMSource.Text = generatorHelper.Default_UTMSource;
+                tbUTMMedium.Text = generatorHelper.Default_UTMMedium;
+                tbUTMCampaign.Text = generatorHelper.Default_UTMCampaign;
+                tbUTMContent.Text = generatorHelper.Default_UTMContent;
+                tbUTMTerm.Text = generatorHelper.Default_UTMTerm;
+                tbUTMAdditional.Text = generatorHelper.Default_UTMAdditional;
+
+                // Refreshing additional templates list
+                foreach (string templateValue in generatorHelper.AdditionalTemplatesList)
+                {
+                    lbAdditionalTemplatesList.Items.Add(templateValue);
+                }
             }
         }
 
@@ -83,8 +166,7 @@ namespace UTMGenerator
         }
 
         /// <summary>
-        /// Безопасно добавляет в поле дополнительных меток
-        /// выбраный шаблон дополнительных меток.
+        /// Safely adds a selected additional tags template to the additional tags field.
         /// </summary>
         private void includeAdditionalTemplate()
         {
@@ -93,22 +175,57 @@ namespace UTMGenerator
 
         private void rbYandexSearch_CheckedChanged(object sender, EventArgs e)
         {
-            if (rbYandexSearch.Checked)
-            {
-                // Формирование шаблона меток
-                tbUTMSource.Text = @"yandex";
-                tbUTMMedium.Text = @"cpc";
-                tbUTMCampaign.Text = @"{campaign_id}";
-                tbUTMContent.Text = @"{ad_id}";
-                tbUTMTerm.Text = @"{keyword}";
-                tbUTMAdditional.Text = @"&block={position_type}&position={position}";
-                includeAdditionalTemplate();
+            targetSystemChanged();
+        }
 
-                // Проверка включения ключевого слова
-                if (!cbIncludeUTMTerm.Checked)
-                    cbIncludeUTMTerm.Checked = true;
-            }
-            refreshResultURL();
+        private void btAdditionalTemplateInclude_Click(object sender, EventArgs e)
+        {
+            includeAdditionalTemplate();
+        }
+
+        /// <summary>
+        /// Returns the current source type
+        /// </summary>
+        /// <returns>The current source type</returns>
+        private SourcesTypes getSourceType()
+        {
+            SourcesTypes result = SourcesTypes.EMPTY;
+
+            if (rbYandexSearch.Checked) { result = SourcesTypes.YANDEX_SEARCH; }
+            else if (rbYandexRSYA.Checked) { result = SourcesTypes.YANDEX_MEDIA; }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Process the form closing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmGenerator_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Saves the current settings
+            SettingsHelper settings = new SettingsHelper();
+
+            settings.SiteURL = tbURL.Text;
+            settings.SourceType = getSourceType();
+
+            settings.UTMSource = tbUTMSource.Text;
+            settings.UTMMedium = tbUTMMedium.Text;
+            settings.UTMCampaign = tbUTMCampaign.Text;
+            settings.UTMContent = tbUTMContent.Text;
+            settings.UTMTerm = tbUTMTerm.Text;
+            settings.UTMAdditional = tbUTMAdditional.Text;
+
+            settings.Transliteration = cbTransliteration.Checked;
+            settings.SlashPlace = cbSlashPlace.Checked;
+
+            settings.SaveSettings();
+        }
+
+        private void tbURL_TextChanged(object sender, EventArgs e)
+        {
+            generatorHelper.SiteURL = tbURL.Text;
         }
     }
 }
