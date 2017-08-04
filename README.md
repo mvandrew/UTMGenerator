@@ -25,4 +25,4 @@ UTM terms Generator is free software.
 
 You can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 
-[GNU General Public License v2](./core/docs/license.txt "GNU General Public License v2")
+[GNU General Public License v2](http://www.gnu.org/licenses/gpl-2.0.html "GNU General Public License v2")
