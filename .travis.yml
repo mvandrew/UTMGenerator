@@ -1,0 +1,9 @@
+language: csharp
+sudo: required
+solution: source/UTMGenerator.sln
+before_install:
+  - sudo apt-get install nunit-console
+before_script:
+  - nuget restore UTMGenerator.sln
+after_script:
+  - nunit-console source/UTMGeneratorTests/bin/Release/UTMGeneratorTests.dll
