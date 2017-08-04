@@ -18,3 +18,11 @@ At the current stage of development, the project is localized only in Russian.
 ## Options
 * Transliteration is supported for the Cyrillic code page.
 * You can additionally add custom terms and subid.
+
+## License
+
+UTM terms Generator is free software.
+
+You can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+[GNU General Public License v2](./core/docs/license.txt "GNU General Public License v2")
