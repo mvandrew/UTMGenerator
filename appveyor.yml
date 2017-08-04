@@ -10,7 +10,7 @@ build:
   project: source/UTMGenerator.sln
 
 before_build:
-  - nuget restore
+  - nuget restore source/UTMGenerator.sln
 
 test:
   assemblies:
