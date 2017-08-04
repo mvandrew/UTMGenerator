@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace UTMGeneratorLibrary
@@ -106,9 +107,21 @@ namespace UTMGeneratorLibrary
             {
                 if (value != _siteURL)
                 {
-                    string result = value;
+                    string result = value.Trim();
+
+                    // Check the protocol information
+                    Regex rg = new Regex(@"^(http|https):\/\/");
+                    if (!rg.IsMatch(result))
+                        result = @"http://" + result;
 
                     _siteURL = result;
+
+                    // Extracting the host name
+                    rg = new Regex(@"^(http|https):\/\/(?<host>[^\/]+)");
+                    Match mtHostName = rg.Match(result);
+                    if (mtHostName.Success)
+                        _hostName = mtHostName.Groups["host"].Value;
+
                     RaiseSiteURLChanged();
                 }
             }

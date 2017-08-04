@@ -10,6 +10,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B36287C9-633C-414B-8D90-8890F9904826}"
 	ProjectSection(SolutionItems) = preProject
 		..\.travis.yml = ..\.travis.yml
+		..\appveyor.yml = ..\appveyor.yml
+		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UTMGeneratorTests", "UTMGeneratorTests\UTMGeneratorTests.csproj", "{8EDF4429-251A-416D-BB68-93F227191BCF}"
