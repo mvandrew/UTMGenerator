@@ -1,6 +1,8 @@
 # UTM terms Generator
 UTM terms Generator for various traffic sources.
 
+[![Build Status](https://travis-ci.org/mvandrew/UTMGenerator.svg?branch=master)](https://travis-ci.org/mvandrew/UTMGenerator)
+
 At the current stage of development, the project is localized only in Russian.
 
 ## Supported sources of advertising traffic
