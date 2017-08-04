@@ -1,0 +1,18 @@
+image: Visual Studio 2015
+platform: Any CPU
+configuration: Release
+
+branches:
+  only:
+    - master
+
+build:
+  project: source/UTMGenerator.sln
+
+before_build:
+  - nuget restore
+
+test:
+  assemblies:
+    only:
+      - source/UTMGeneratorTests/bin/Release/UTMGeneratorTests.dll

@@ -1,5 +1,6 @@
 language: csharp
 sudo: required
+dist: precise
 solution: source/UTMGenerator.sln
 before_install:
   - sudo apt-get install nunit-console
