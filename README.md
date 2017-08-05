@@ -23,12 +23,12 @@ At the current stage of development, the project has only Russian localization.
 * You can additionally add custom terms and subid.
 
 ## Copyright
-UTM tags Generator is copyright 2017 by [Andrey Mishchenko](https://www.facebook.com/andrey.msav).
+UTM tags Generator is copyright 2017 by [Andrey Mishchenko](http://www.msav.ru/).
 
 All rights reserved.
 
 ## License
-UTM terms Generator is free software.
+UTM tags Generator is free software.
 
 You can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 

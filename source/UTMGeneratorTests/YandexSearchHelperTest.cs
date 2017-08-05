@@ -175,5 +175,56 @@ namespace UTMGeneratorTests
             else
                 Assert.Fail(@"The URL anchor extracting test has failed.");
         }
+
+        [Test]
+        public void Test_Transliterate()
+        {
+            YandexSearchHelper yaHelper = new YandexSearchHelper();
+
+            // Test strings
+            string[] testSource =
+            {
+                "Тест",
+                "TesT",
+                "Два Слова",
+                "Два  ПроБела",
+                "Слово?99",
+                "Слово 76",
+                "347",
+                "33_987"
+            };
+
+            // Test results
+            string[] testResult =
+            {
+                "test",
+                "test",
+                "dva-slova",
+                "dva-probela",
+                "slovo-99",
+                "slovo-76",
+                "347",
+                "33_987"
+            };
+
+            // Result Info
+            bool result = true;
+            string failValue = "";
+
+            // Testing
+            for (int i = 0; i < testSource.Length; i++)
+            {
+                if (yaHelper.Transliterate(testSource[i]) != testResult[i])
+                {
+                    result = false;
+                    failValue = yaHelper.Transliterate(testSource[i]);
+                }
+            }
+
+            if (result)
+                Assert.Pass(@"Transliterate test has passed.");
+            else
+                Assert.Fail(@"Transliterate test has failed: " + failValue);
+        }
     }
 }

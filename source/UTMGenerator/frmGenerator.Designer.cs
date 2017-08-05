@@ -400,6 +400,7 @@
             this.tbUTMSource.Name = "tbUTMSource";
             this.tbUTMSource.Size = new System.Drawing.Size(412, 20);
             this.tbUTMSource.TabIndex = 4;
+            this.tbUTMSource.TextChanged += new System.EventHandler(this.tbUTMSource_TextChanged);
             // 
             // lbUTMSourceHint
             // 
@@ -431,6 +432,7 @@
             this.tbUTMMedium.Name = "tbUTMMedium";
             this.tbUTMMedium.Size = new System.Drawing.Size(412, 20);
             this.tbUTMMedium.TabIndex = 9;
+            this.tbUTMMedium.TextChanged += new System.EventHandler(this.tbUTMMedium_TextChanged);
             // 
             // lbUTMMedium
             // 
@@ -460,6 +462,7 @@
             this.tbUTMCampaign.Name = "tbUTMCampaign";
             this.tbUTMCampaign.Size = new System.Drawing.Size(412, 20);
             this.tbUTMCampaign.TabIndex = 12;
+            this.tbUTMCampaign.TextChanged += new System.EventHandler(this.tbUTMCampaign_TextChanged);
             // 
             // lbUTMCampaign
             // 
@@ -489,6 +492,7 @@
             this.tbUTMContent.Name = "tbUTMContent";
             this.tbUTMContent.Size = new System.Drawing.Size(412, 20);
             this.tbUTMContent.TabIndex = 15;
+            this.tbUTMContent.TextChanged += new System.EventHandler(this.tbUTMContent_TextChanged);
             // 
             // lbUTMContent
             // 
@@ -518,6 +522,7 @@
             this.tbUTMTerm.Name = "tbUTMTerm";
             this.tbUTMTerm.Size = new System.Drawing.Size(412, 20);
             this.tbUTMTerm.TabIndex = 18;
+            this.tbUTMTerm.TextChanged += new System.EventHandler(this.tbUTMTerm_TextChanged);
             // 
             // lbUTMTerm
             // 
@@ -549,6 +554,7 @@
             this.tbUTMAdditional.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbUTMAdditional.Size = new System.Drawing.Size(412, 55);
             this.tbUTMAdditional.TabIndex = 21;
+            this.tbUTMAdditional.TextChanged += new System.EventHandler(this.tbUTMAdditional_TextChanged);
             // 
             // lbUTMAdditional
             // 
@@ -592,6 +598,7 @@
             this.cbSlashPlace.TabIndex = 24;
             this.cbSlashPlace.Text = "Ставить слеш / после адреса";
             this.cbSlashPlace.UseVisualStyleBackColor = true;
+            this.cbSlashPlace.CheckedChanged += new System.EventHandler(this.cbSlashPlace_CheckedChanged);
             // 
             // lbTransliterationHint
             // 
@@ -615,6 +622,7 @@
             this.cbTransliteration.TabIndex = 0;
             this.cbTransliteration.Text = "Транслитерация";
             this.cbTransliteration.UseVisualStyleBackColor = true;
+            this.cbTransliteration.CheckedChanged += new System.EventHandler(this.cbTransliteration_CheckedChanged);
             // 
             // gbAdditionalTemplates
             // 
@@ -697,6 +705,7 @@
             this.btCopy.Text = "Копировать в буфер обмена";
             this.btCopy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btCopy.UseVisualStyleBackColor = true;
+            this.btCopy.Click += new System.EventHandler(this.btCopy_Click);
             // 
             // btRefresh
             // 
@@ -713,6 +722,7 @@
             // 
             // frmGenerator
             // 
+            this.AcceptButton = this.btCopy;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 665);

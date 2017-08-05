@@ -144,6 +144,12 @@ namespace UTMGenerator
             }
             else
             {
+                generatorHelper.SiteURLChanged += GeneratorHelper_SiteURLChanged;
+
+                generatorHelper.Transliteration = cbTransliteration.Checked;
+                generatorHelper.SlashPlace = cbSlashPlace.Checked;
+                generatorHelper.SiteURL = tbURL.Text;
+
                 // Set default tag values
                 tbUTMSource.Text = generatorHelper.Default_UTMSource;
                 tbUTMMedium.Text = generatorHelper.Default_UTMMedium;
@@ -158,6 +164,11 @@ namespace UTMGenerator
                     lbAdditionalTemplatesList.Items.Add(templateValue);
                 }
             }
+        }
+
+        private void GeneratorHelper_SiteURLChanged(object sender, EventArgs e)
+        {
+            tbResultURL.Text = generatorHelper.ResultURL;
         }
 
         private void refreshResultURL()
@@ -225,7 +236,62 @@ namespace UTMGenerator
 
         private void tbURL_TextChanged(object sender, EventArgs e)
         {
-            generatorHelper.SiteURL = tbURL.Text;
+            if (generatorHelper != null)
+                generatorHelper.SiteURL = tbURL.Text;
+        }
+
+        private void cbSlashPlace_CheckedChanged(object sender, EventArgs e)
+        {
+            if (generatorHelper != null)
+                generatorHelper.SlashPlace = cbSlashPlace.Checked;
+        }
+
+        private void tbUTMSource_TextChanged(object sender, EventArgs e)
+        {
+            if (generatorHelper != null)
+                generatorHelper.UTMSource = tbUTMSource.Text;
+        }
+
+        private void cbTransliteration_CheckedChanged(object sender, EventArgs e)
+        {
+            if (generatorHelper != null)
+                generatorHelper.Transliteration = cbTransliteration.Checked;
+        }
+
+        private void tbUTMMedium_TextChanged(object sender, EventArgs e)
+        {
+            if (generatorHelper != null)
+                generatorHelper.UTMMedium = tbUTMMedium.Text;
+        }
+
+        private void tbUTMCampaign_TextChanged(object sender, EventArgs e)
+        {
+            if (generatorHelper != null)
+                generatorHelper.UTMCampaign = tbUTMCampaign.Text;
+        }
+
+        private void tbUTMContent_TextChanged(object sender, EventArgs e)
+        {
+            if (generatorHelper != null)
+                generatorHelper.UTMContent = tbUTMContent.Text;
+        }
+
+        private void tbUTMTerm_TextChanged(object sender, EventArgs e)
+        {
+            if (generatorHelper != null)
+                generatorHelper.UTMTerm = tbUTMTerm.Text;
+        }
+
+        private void tbUTMAdditional_TextChanged(object sender, EventArgs e)
+        {
+            if (generatorHelper != null)
+                generatorHelper.UTMAdditional = tbUTMAdditional.Text;
+        }
+
+        private void btCopy_Click(object sender, EventArgs e)
+        {
+            if (tbResultURL.Text.Length > 0)
+                Clipboard.SetText(tbResultURL.Text);
         }
     }
 }
