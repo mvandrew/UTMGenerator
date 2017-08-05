@@ -121,7 +121,34 @@ namespace UTMGeneratorLibrary
                     Match mtHostName = rg.Match(result);
                     if (mtHostName.Success)
                         _hostName = mtHostName.Groups["host"].Value;
+                    else
+                        _hostName = "";
 
+                    // Extracting the clear URL value without arguments and anchor
+                    rg = new Regex(@"(?<url>^(http|https):\/\/[^?#]+)");
+                    Match mtClearURL = rg.Match(result);
+                    if (mtClearURL.Success)
+                        _clearURL = mtClearURL.Groups["url"].Value;
+                    else
+                        _clearURL = "";
+
+                    // Extracting the URL arguments
+                    rg = new Regex(@"(?<args>\?[^?#]+)");
+                    Match mtArguments = rg.Match(result);
+                    if (mtArguments.Success)
+                        _arguments = mtArguments.Groups["args"].Value;
+                    else
+                        _arguments = "";
+
+                    // Extracting the URL anchor
+                    rg = new Regex(@"(?<anchor>#[^?#]+)");
+                    Match mtAnchor = rg.Match(result);
+                    if (mtAnchor.Success)
+                        _anchor = mtAnchor.Groups["anchor"].Value;
+                    else
+                        _anchor = "";
+
+                    // Raise the event
                     RaiseSiteURLChanged();
                 }
             }

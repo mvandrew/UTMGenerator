@@ -62,5 +62,118 @@ namespace UTMGeneratorTests
             else
                 Assert.Fail(@"The host name extracting test has failed.");
         }
+
+        [Test]
+        public void TestSiteURL_ClearURL()
+        {
+            YandexSearchHelper yaHelper = new YandexSearchHelper();
+            string baseURL = @"https://site.ru/index.html";
+            string[] testedURLs =
+            {
+                baseURL + @"?query=test_value",
+                baseURL + @"#test_anchor",
+                baseURL + @"?query=test_value#test_anchor"
+            };
+
+            bool result = true;
+
+            foreach (string urlValue in testedURLs)
+            {
+                yaHelper.SiteURL = urlValue;
+                if (yaHelper.ClearURL != baseURL)
+                    result = false;
+            }
+            
+            if (result)
+                Assert.Pass(@"The clear URL value extracting test has passed.");
+            else
+                Assert.Fail(@"The clear URL value extracting test has failed.");
+        }
+
+        [Test]
+        public void TestSiteURL_URLArguments()
+        {
+            YandexSearchHelper yaHelper = new YandexSearchHelper();
+            string baseURL = @"https://site.ru/index.html";
+            string args = @"?query=test&sec=lss";
+            string anchor = @"#anchor_test";
+
+            // Test strings
+            string[] testedURLs =
+            {
+                baseURL,
+                baseURL + anchor,
+                baseURL + args,
+                baseURL + args + anchor,
+                baseURL + anchor + args
+            };
+
+            // Test results
+            string[] testResult =
+            {
+                "",
+                "",
+                args,
+                args,
+                args
+            };
+
+            bool result = true;
+
+            foreach (string urlValue in testedURLs)
+            {
+                yaHelper.SiteURL = urlValue;
+                if (yaHelper.Arguments != testResult[Array.IndexOf(testedURLs, urlValue)])
+                    result = false;
+            }
+
+            if (result)
+                Assert.Pass(@"The URL arguments extracting test has passed.");
+            else
+                Assert.Fail(@"The URL arguments extracting test has failed.");
+        }
+
+        [Test]
+        public void TestSiteURL_URLAnchor()
+        {
+            YandexSearchHelper yaHelper = new YandexSearchHelper();
+            string baseURL = @"https://site.ru/index.html";
+            string args = @"?query=test&sec=lss";
+            string anchor = @"#anchor_test";
+
+            // Test strings
+            string[] testedURLs =
+            {
+                baseURL,
+                baseURL + anchor,
+                baseURL + args,
+                baseURL + args + anchor,
+                baseURL + anchor + args
+            };
+
+            // Test results
+            string[] testResult =
+            {
+                "",
+                anchor,
+                "",
+                anchor,
+                anchor
+            };
+
+            bool result = true;
+
+            foreach (string urlValue in testedURLs)
+            {
+                yaHelper.SiteURL = urlValue;
+                if (yaHelper.Anchor != testResult[Array.IndexOf(testedURLs, urlValue)])
+                    result = false;
+            }
+
+            if (result)
+                Assert.Pass(@"The URL anchor extracting test has passed.");
+            else
+                Assert.Fail(@"The URL anchor extracting test has failed.");
+        }
     }
 }

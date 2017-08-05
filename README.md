@@ -12,7 +12,7 @@ At the current stage of development, the project has only Russian localization.
 * [Target VK](https://vk.com/ads).
 * [Target Mail.ru](https://target.my.com/).
 * [Facebook Target](https://business.facebook.com/).
-* [Instagram in profile](https://www.instagram.com/).
+* [Instagram profile links](https://www.instagram.com/).
 * [Twitter post links](https://twitter.com/).
 * [Recreativ](https://recreativ.ru/).
 * [Kadam](https://www.kadam.net/).
