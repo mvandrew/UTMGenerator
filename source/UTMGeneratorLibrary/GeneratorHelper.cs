@@ -82,12 +82,12 @@ namespace UTMGeneratorLibrary
             _anchor = "";
             _transliteration = false;
             _slashPlace = false;
-            _utmAdditional = "";
-            _utmCampaign = "";
-            _utmContent = "";
-            _utmMedium = "";
-            _utmSource = "";
-            _utmTerm = "";
+            _utmAdditional = Default_UTMAdditional;
+            _utmCampaign = Default_UTMCampaign;
+            _utmContent = Default_UTMContent;
+            _utmMedium = Default_UTMMedium;
+            _utmSource = Default_UTMSource;
+            _utmTerm = Default_UTMTerm;
         }
 
         /// <summary>
@@ -411,7 +411,7 @@ namespace UTMGeneratorLibrary
 
                 
                 // Trailing slash check
-                if (SlashPlace && result.PadLeft(1) != "/")
+                if (SlashPlace && result.Length > 0 && result.Substring(result.Length - 1, 1) != "/")
                     result += "/";
 
                 

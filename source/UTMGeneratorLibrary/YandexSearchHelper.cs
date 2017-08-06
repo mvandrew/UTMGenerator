@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace UTMGeneratorLibrary
 {
+    /// <summary>
+    /// Yandex Direct search traffic
+    /// </summary>
     public class YandexSearchHelper : GeneratorHelper
     {
         /// <summary>
@@ -74,11 +77,13 @@ namespace UTMGeneratorLibrary
         /// <summary>
         /// Process additional template name
         /// </summary>
+        /// <remarks>https://yandex.ru/support/direct/statistics/url-tags.html</remarks>
         /// <param name="additionalTemplateName">Value from the collection AdditionalTemplatesList</param>
         /// <returns>Additional UTM Tags</returns>
         /// <see cref="AdditionalTemplatesList"/>
         public override string getUTMAdditionalValue(string additionalTemplateName)
         {
+
             string result = "";
 
             int templateIndex = Array.IndexOf(AdditionalTemplatesList, additionalTemplateName);
@@ -89,7 +94,11 @@ namespace UTMGeneratorLibrary
                     result = @"&region={region_id}&region_name={region_name}";
                     break;
                 case 1:
-                    result = @"";
+                    result = @"&s=" + HostName +
+                        @"&w=" + Default_UTMSource +
+                        @"&p=" + Default_UTMCampaign +
+                        @"&t=" + Default_UTMContent +
+                        @"&m=" + Default_UTMMedium;
                     break;
             }
 

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UTMGeneratorLibrary;
@@ -128,6 +129,7 @@ namespace UTMGenerator
         {
             // Creating helper class
             if (rbYandexSearch.Checked) { generatorHelper = new YandexSearchHelper(); }
+            else if (rbYandexRSYA.Checked) { generatorHelper = new YandexMediaHelper(); }
             else { generatorHelper = null; }
 
             // Set default field values
@@ -292,6 +294,24 @@ namespace UTMGenerator
         {
             if (tbResultURL.Text.Length > 0)
                 Clipboard.SetText(tbResultURL.Text);
+        }
+
+        private void btRefresh_Click(object sender, EventArgs e)
+        {
+            if (generatorHelper != null)
+                tbResultURL.Text = generatorHelper.ResultURL;
+        }
+
+        private void btTest_Click(object sender, EventArgs e)
+        {
+            Regex rg = new Regex(@"^(https|http):\/\/");
+            if (rg.IsMatch(tbResultURL.Text))
+                System.Diagnostics.Process.Start(tbResultURL.Text);
+        }
+
+        private void rbYandexRSYA_CheckedChanged(object sender, EventArgs e)
+        {
+            targetSystemChanged();
         }
     }
 }

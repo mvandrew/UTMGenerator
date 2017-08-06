@@ -85,6 +85,7 @@
             this.tbResultURL = new System.Windows.Forms.TextBox();
             this.btCopy = new System.Windows.Forms.Button();
             this.btRefresh = new System.Windows.Forms.Button();
+            this.btTest = new System.Windows.Forms.Button();
             this.gbSource.SuspendLayout();
             this.gbOptions.SuspendLayout();
             this.gbAdditionalTemplates.SuspendLayout();
@@ -370,6 +371,7 @@
             this.rbYandexRSYA.TabStop = true;
             this.rbYandexRSYA.Text = "Яндекс Директ - РСЯ";
             this.rbYandexRSYA.UseVisualStyleBackColor = true;
+            this.rbYandexRSYA.CheckedChanged += new System.EventHandler(this.rbYandexRSYA_CheckedChanged);
             // 
             // rbYandexSearch
             // 
@@ -719,6 +721,18 @@
             this.btRefresh.Text = "Обновить";
             this.btRefresh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btRefresh.UseVisualStyleBackColor = true;
+            this.btRefresh.Click += new System.EventHandler(this.btRefresh_Click);
+            // 
+            // btTest
+            // 
+            this.btTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btTest.Location = new System.Drawing.Point(294, 628);
+            this.btTest.Name = "btTest";
+            this.btTest.Size = new System.Drawing.Size(93, 28);
+            this.btTest.TabIndex = 29;
+            this.btTest.Text = "Проверить";
+            this.btTest.UseVisualStyleBackColor = true;
+            this.btTest.Click += new System.EventHandler(this.btTest_Click);
             // 
             // frmGenerator
             // 
@@ -726,6 +740,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 665);
+            this.Controls.Add(this.btTest);
             this.Controls.Add(this.btCopy);
             this.Controls.Add(this.btRefresh);
             this.Controls.Add(this.tbResultURL);
@@ -828,5 +843,6 @@
         private System.Windows.Forms.TextBox tbResultURL;
         private System.Windows.Forms.Button btRefresh;
         private System.Windows.Forms.Button btCopy;
+        private System.Windows.Forms.Button btTest;
     }
 }
