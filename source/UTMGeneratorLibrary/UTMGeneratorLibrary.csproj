@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeneratorHelper.cs" />
+    <Compile Include="GoogleMediaHelper.cs" />
+    <Compile Include="GoogleSearchHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingsHelper.cs" />
     <Compile Include="SourcesTypes.cs" />

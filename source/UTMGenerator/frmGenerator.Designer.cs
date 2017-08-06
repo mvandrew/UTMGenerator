@@ -86,6 +86,8 @@
             this.btCopy = new System.Windows.Forms.Button();
             this.btRefresh = new System.Windows.Forms.Button();
             this.btTest = new System.Windows.Forms.Button();
+            this.llYandexDirectTemplates = new System.Windows.Forms.LinkLabel();
+            this.llGoogleAdWordsTemplates = new System.Windows.Forms.LinkLabel();
             this.gbSource.SuspendLayout();
             this.gbOptions.SuspendLayout();
             this.gbAdditionalTemplates.SuspendLayout();
@@ -112,6 +114,8 @@
             // 
             // gbSource
             // 
+            this.gbSource.Controls.Add(this.llGoogleAdWordsTemplates);
+            this.gbSource.Controls.Add(this.llYandexDirectTemplates);
             this.gbSource.Controls.Add(this.llOblivkiBiz);
             this.gbSource.Controls.Add(this.llKadam);
             this.gbSource.Controls.Add(this.llRecreativ);
@@ -357,6 +361,7 @@
             this.rbGoogleKMS.TabStop = true;
             this.rbGoogleKMS.Text = "Google AdWords - КМС";
             this.rbGoogleKMS.UseVisualStyleBackColor = true;
+            this.rbGoogleKMS.CheckedChanged += new System.EventHandler(this.rbGoogleKMS_CheckedChanged);
             // 
             // rbGoogleAdWords
             // 
@@ -368,6 +373,7 @@
             this.rbGoogleAdWords.TabStop = true;
             this.rbGoogleAdWords.Text = "Google AdWords - Поиск";
             this.rbGoogleAdWords.UseVisualStyleBackColor = true;
+            this.rbGoogleAdWords.CheckedChanged += new System.EventHandler(this.rbGoogleAdWords_CheckedChanged);
             // 
             // rbYandexRSYA
             // 
@@ -742,6 +748,28 @@
             this.btTest.UseVisualStyleBackColor = true;
             this.btTest.Click += new System.EventHandler(this.btTest_Click);
             // 
+            // llYandexDirectTemplates
+            // 
+            this.llYandexDirectTemplates.AutoSize = true;
+            this.llYandexDirectTemplates.Location = new System.Drawing.Point(209, 45);
+            this.llYandexDirectTemplates.Name = "llYandexDirectTemplates";
+            this.llYandexDirectTemplates.Size = new System.Drawing.Size(63, 13);
+            this.llYandexDirectTemplates.TabIndex = 22;
+            this.llYandexDirectTemplates.TabStop = true;
+            this.llYandexDirectTemplates.Text = "Шаблоны...";
+            this.llYandexDirectTemplates.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llYandexDirectTemplates_LinkClicked);
+            // 
+            // llGoogleAdWordsTemplates
+            // 
+            this.llGoogleAdWordsTemplates.AutoSize = true;
+            this.llGoogleAdWordsTemplates.Location = new System.Drawing.Point(209, 91);
+            this.llGoogleAdWordsTemplates.Name = "llGoogleAdWordsTemplates";
+            this.llGoogleAdWordsTemplates.Size = new System.Drawing.Size(63, 13);
+            this.llGoogleAdWordsTemplates.TabIndex = 23;
+            this.llGoogleAdWordsTemplates.TabStop = true;
+            this.llGoogleAdWordsTemplates.Text = "Шаблоны...";
+            this.llGoogleAdWordsTemplates.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llGoogleAdWordsTemplates_LinkClicked);
+            // 
             // frmGenerator
             // 
             this.AcceptButton = this.btCopy;
@@ -852,5 +880,7 @@
         private System.Windows.Forms.Button btRefresh;
         private System.Windows.Forms.Button btCopy;
         private System.Windows.Forms.Button btTest;
+        private System.Windows.Forms.LinkLabel llGoogleAdWordsTemplates;
+        private System.Windows.Forms.LinkLabel llYandexDirectTemplates;
     }
 }

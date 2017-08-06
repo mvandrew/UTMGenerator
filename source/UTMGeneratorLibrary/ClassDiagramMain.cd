@@ -3,7 +3,7 @@
   <Class Name="UTMGeneratorLibrary.GeneratorHelper">
     <Position X="0.5" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>gAAAgAEBCAAACAAQAAIAAAAIDAIAAAAAYAQQIAgAAAA=</HashCode>
+      <HashCode>hAAAlgEBCBAACMASAAIEQAAITAIAAAQgYAQQZAoAGAA=</HashCode>
       <FileName>GeneratorHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -15,16 +15,37 @@
     </TypeIdentifier>
   </Class>
   <Class Name="UTMGeneratorLibrary.SettingsHelper">
-    <Position X="5.75" Y="0.5" Width="2" />
+    <Position X="10" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAABggAAAAAAAAwAAAAAAAABAAAAAAgAAAATAoAGAA=</HashCode>
       <FileName>SettingsHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Enum Name="UTMGeneratorLibrary.SourcesTypes">
-    <Position X="8.5" Y="0.5" Width="1.5" />
+  <Class Name="UTMGeneratorLibrary.YandexMediaHelper">
+    <Position X="5.5" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAABCAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>YandexMediaHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UTMGeneratorLibrary.GoogleSearchHelper">
+    <Position X="3" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAACAAAAAAAAAAADAAAAAAAAAAAIAgAAAA=</HashCode>
+      <FileName>GoogleSearchHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UTMGeneratorLibrary.GoogleMediaHelper">
+    <Position X="5.5" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GoogleMediaHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="UTMGeneratorLibrary.SourcesTypes">
+    <Position X="12.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAIABAAACAAAAAABAAABGAAAAAAAQAgAIABBAAAA=</HashCode>
       <FileName>SourcesTypes.cs</FileName>
     </TypeIdentifier>
   </Enum>

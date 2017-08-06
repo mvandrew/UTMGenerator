@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace UTMGeneratorLibrary
 {
     /// <summary>
-    /// Yandex Direct media network (RSYA) traffic
+    /// Google AdWords KMS media network traffic
     /// </summary>
-    public class YandexMediaHelper : YandexSearchHelper
+    public class GoogleMediaHelper : GoogleSearchHelper
     {
         /// <summary>
         /// Return default UTM Additional tags value
@@ -17,7 +17,7 @@ namespace UTMGeneratorLibrary
         /// <value>Default value is additional tags: source placement.</value>
         public override string Default_UTMAdditional
         {
-            get { return @"&utm_site={source}"; }
+            get { return @"&utm_site={placement}"; }
         }
     }
 }

@@ -48,6 +48,12 @@ namespace UTMGenerator
                 case SourcesTypes.YANDEX_MEDIA:
                     rbYandexRSYA.Checked = true;
                     break;
+                case SourcesTypes.GOOGLE_SEARCH:
+                    rbGoogleAdWords.Checked = true;
+                    break;
+                case SourcesTypes.GOOGLE_MEDIA:
+                    rbGoogleKMS.Checked = true;
+                    break;
             }
 
             tbUTMSource.Text = settings.UTMSource;
@@ -138,6 +144,8 @@ namespace UTMGenerator
             // Creating helper class
             if (rbYandexSearch.Checked) { generatorHelper = new YandexSearchHelper(); }
             else if (rbYandexRSYA.Checked) { generatorHelper = new YandexMediaHelper(); }
+            else if (rbGoogleAdWords.Checked) { generatorHelper = new GoogleSearchHelper(); }
+            else if (rbGoogleKMS.Checked) { generatorHelper = new GoogleMediaHelper(); }
             else { generatorHelper = null; }
 
             // Set default field values
@@ -214,6 +222,8 @@ namespace UTMGenerator
 
             if (rbYandexSearch.Checked) { result = SourcesTypes.YANDEX_SEARCH; }
             else if (rbYandexRSYA.Checked) { result = SourcesTypes.YANDEX_MEDIA; }
+            else if (rbGoogleAdWords.Checked) { result = SourcesTypes.GOOGLE_SEARCH; }
+            else if (rbGoogleKMS.Checked) { result = SourcesTypes.GOOGLE_MEDIA; }
 
             return result;
         }
@@ -320,6 +330,26 @@ namespace UTMGenerator
         private void rbYandexRSYA_CheckedChanged(object sender, EventArgs e)
         {
             targetSystemChanged();
+        }
+
+        private void rbGoogleAdWords_CheckedChanged(object sender, EventArgs e)
+        {
+            targetSystemChanged();
+        }
+
+        private void rbGoogleKMS_CheckedChanged(object sender, EventArgs e)
+        {
+            targetSystemChanged();
+        }
+
+        private void llYandexDirectTemplates_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"https://yandex.ru/support/direct/statistics/url-tags.html");
+        }
+
+        private void llGoogleAdWordsTemplates_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"https://support.google.com/adwords/answer/6305348");
         }
     }
 }

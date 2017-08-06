@@ -7,35 +7,36 @@ using System.Threading.Tasks;
 namespace UTMGeneratorLibrary
 {
     /// <summary>
-    /// Yandex Direct search traffic
+    /// Google AdWords search traffic
     /// </summary>
-    public class YandexSearchHelper : GeneratorHelper
+    /// <remarks>https://support.google.com/adwords/answer/6305348?authuser=1</remarks>
+    public class GoogleSearchHelper : GeneratorHelper
     {
         /// <summary>
         /// Return default UTM Source value
         /// </summary>
-        /// <value>Default value is "yandex" and source type</value>
+        /// <value>Default value is "google" and network type</value>
         public override string Default_UTMSource
         {
-            get { return @"yandex.{source_type}"; }
+            get { return @"google.{network}"; }
         }
 
         /// <summary>
         /// Return default UTM Campaign value
         /// </summary>
-        /// <value>Default value is Yandex Direct Campaign ID.</value>
+        /// <value>Default value is Google AdWords Campaign ID.</value>
         public override string Default_UTMCampaign
         {
-            get { return @"{campaign_id}"; }
+            get { return @"{campaignid}"; }
         }
 
         /// <summary>
         /// Return default UTM Content value
         /// </summary>
-        /// <value>Default value is Yandex Direct Ads ID.</value>
+        /// <value>Default value is Google AdWords group ID and Ads ID.</value>
         public override string Default_UTMContent
         {
-            get { return @"{ad_id}"; }
+            get { return @"{adgroupid}.{creative}"; }
         }
 
         /// <summary>
@@ -50,10 +51,10 @@ namespace UTMGeneratorLibrary
         /// <summary>
         /// Return default UTM Additional tags value
         /// </summary>
-        /// <value>Default value is additional tags: position type and position info.</value>
+        /// <value>Default value is additional tags: ads position.</value>
         public override string Default_UTMAdditional
         {
-            get { return @"&utm_position=yandex.{position_type}.{position}"; }
+            get { return @"&utm_position=google.{adposition}"; }
         }
 
         /// <summary>
@@ -66,7 +67,6 @@ namespace UTMGeneratorLibrary
             {
                 string[] result =
                 {
-                    @"Регионы для Директа",
                     @"Субаккаунты для M1-Shop.Ru"
                 };
 
@@ -77,7 +77,7 @@ namespace UTMGeneratorLibrary
         /// <summary>
         /// Process additional template name
         /// </summary>
-        /// <remarks>https://yandex.ru/support/direct/statistics/url-tags.html</remarks>
+        /// <remarks>https://support.google.com/adwords/answer/6305348?authuser=1</remarks>
         /// <param name="additionalTemplateName">Value from the collection AdditionalTemplatesList</param>
         /// <returns>Additional UTM Tags</returns>
         /// <see cref="AdditionalTemplatesList"/>
@@ -91,9 +91,6 @@ namespace UTMGeneratorLibrary
             switch (templateIndex)
             {
                 case 0:
-                    result = @"&region={region_id}&region_name={region_name}";
-                    break;
-                case 1:
                     result = @"&s=" + HostName +
                         @"&w=" + Default_UTMSource +
                         @"&p=" + Default_UTMCampaign +
