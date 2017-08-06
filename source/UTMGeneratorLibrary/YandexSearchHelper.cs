@@ -14,10 +14,10 @@ namespace UTMGeneratorLibrary
         /// <summary>
         /// Return default UTM Source value
         /// </summary>
-        /// <value>Default value is "yandex" and source type</value>
+        /// <value>Default value is "yandex"</value>
         public override string Default_UTMSource
         {
-            get { return @"yandex.{source_type}"; }
+            get { return @"yandex"; }
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace UTMGeneratorLibrary
         /// <value>Default value is Yandex Direct Campaign ID.</value>
         public override string Default_UTMCampaign
         {
-            get { return @"{campaign_id}"; }
+            get { return @"{campaign_id}|{source_type}"; }
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace UTMGeneratorLibrary
         /// <value>Default value is additional tags: position type and position info.</value>
         public override string Default_UTMAdditional
         {
-            get { return @"&utm_position=yandex.{position_type}.{position}"; }
+            get { return @"&utm_position={position_type}|{position}"; }
         }
 
         /// <summary>

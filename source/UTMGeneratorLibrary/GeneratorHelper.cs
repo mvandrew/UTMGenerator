@@ -519,7 +519,7 @@ namespace UTMGeneratorLibrary
         /// <returns>The safe value.</returns>
         public string ReplaceProhibitedCharacters(string sourceValue)
         {
-            Regex rg = new Regex(@"[^\w{}\.]+");
+            Regex rg = new Regex(@"[^\w{}\.\|]+");
             string result = rg.Replace(sourceValue, "-");
 
             return result;

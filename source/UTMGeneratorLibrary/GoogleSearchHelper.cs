@@ -18,7 +18,7 @@ namespace UTMGeneratorLibrary
         /// <value>Default value is "google" and network type</value>
         public override string Default_UTMSource
         {
-            get { return @"google.{network}"; }
+            get { return @"google"; }
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace UTMGeneratorLibrary
         /// <value>Default value is Google AdWords Campaign ID.</value>
         public override string Default_UTMCampaign
         {
-            get { return @"{campaignid}"; }
+            get { return @"{campaignid}|{network}"; }
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace UTMGeneratorLibrary
         /// <value>Default value is Google AdWords group ID and Ads ID.</value>
         public override string Default_UTMContent
         {
-            get { return @"{adgroupid}.{creative}"; }
+            get { return @"{adgroupid}|{creative}"; }
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace UTMGeneratorLibrary
         /// <value>Default value is additional tags: ads position.</value>
         public override string Default_UTMAdditional
         {
-            get { return @"&utm_position=google.{adposition}"; }
+            get { return @"&utm_position={adposition}"; }
         }
 
         /// <summary>
