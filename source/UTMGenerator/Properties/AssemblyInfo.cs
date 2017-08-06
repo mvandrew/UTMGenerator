@@ -6,13 +6,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("UTMGenerator")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("UTM Tags Generator")]
+[assembly: AssemblyDescription("UTM tags Generator for various traffic sources.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Andrey Mishchenko")]
 [assembly: AssemblyProduct("UTMGenerator")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright © Andrey Mishchenko 2017")]
+[assembly: AssemblyTrademark("Andrey Mishchenko")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

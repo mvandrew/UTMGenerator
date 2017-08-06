@@ -254,6 +254,7 @@
             // rbOblivkiBiz
             // 
             this.rbOblivkiBiz.AutoSize = true;
+            this.rbOblivkiBiz.Enabled = false;
             this.rbOblivkiBiz.Location = new System.Drawing.Point(6, 273);
             this.rbOblivkiBiz.Name = "rbOblivkiBiz";
             this.rbOblivkiBiz.Size = new System.Drawing.Size(86, 17);
@@ -265,6 +266,7 @@
             // rbKadam
             // 
             this.rbKadam.AutoSize = true;
+            this.rbKadam.Enabled = false;
             this.rbKadam.Location = new System.Drawing.Point(6, 250);
             this.rbKadam.Name = "rbKadam";
             this.rbKadam.Size = new System.Drawing.Size(58, 17);
@@ -276,6 +278,7 @@
             // rbRecreativ
             // 
             this.rbRecreativ.AutoSize = true;
+            this.rbRecreativ.Enabled = false;
             this.rbRecreativ.Location = new System.Drawing.Point(6, 227);
             this.rbRecreativ.Name = "rbRecreativ";
             this.rbRecreativ.Size = new System.Drawing.Size(71, 17);
@@ -287,6 +290,7 @@
             // rbTwitter
             // 
             this.rbTwitter.AutoSize = true;
+            this.rbTwitter.Enabled = false;
             this.rbTwitter.Location = new System.Drawing.Point(6, 204);
             this.rbTwitter.Name = "rbTwitter";
             this.rbTwitter.Size = new System.Drawing.Size(150, 17);
@@ -298,6 +302,7 @@
             // rbInstagram
             // 
             this.rbInstagram.AutoSize = true;
+            this.rbInstagram.Enabled = false;
             this.rbInstagram.Location = new System.Drawing.Point(6, 181);
             this.rbInstagram.Name = "rbInstagram";
             this.rbInstagram.Size = new System.Drawing.Size(71, 17);
@@ -309,6 +314,7 @@
             // rbFacebook
             // 
             this.rbFacebook.AutoSize = true;
+            this.rbFacebook.Enabled = false;
             this.rbFacebook.Location = new System.Drawing.Point(6, 158);
             this.rbFacebook.Name = "rbFacebook";
             this.rbFacebook.Size = new System.Drawing.Size(107, 17);
@@ -320,6 +326,7 @@
             // rbMailTarget
             // 
             this.rbMailTarget.AutoSize = true;
+            this.rbMailTarget.Enabled = false;
             this.rbMailTarget.Location = new System.Drawing.Point(6, 135);
             this.rbMailTarget.Name = "rbMailTarget";
             this.rbMailTarget.Size = new System.Drawing.Size(165, 17);
@@ -331,6 +338,7 @@
             // rbVK
             // 
             this.rbVK.AutoSize = true;
+            this.rbVK.Enabled = false;
             this.rbVK.Location = new System.Drawing.Point(6, 112);
             this.rbVK.Name = "rbVK";
             this.rbVK.Size = new System.Drawing.Size(136, 17);

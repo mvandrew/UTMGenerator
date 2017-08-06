@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows.Forms;
 using UTMGeneratorLibrary;
 
@@ -25,6 +26,13 @@ namespace UTMGenerator
         public frmGenerator()
         {
             InitializeComponent();
+
+            //
+            // Determine current assembly version
+            //
+            Version ver = Assembly.GetEntryAssembly().GetName().Version;
+            Text += @" - Вер. " + ver.ToString();
+
 
             //
             // Load the latest settings
