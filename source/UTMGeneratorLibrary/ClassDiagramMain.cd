@@ -38,8 +38,15 @@
   <Class Name="UTMGeneratorLibrary.GoogleMediaHelper">
     <Position X="5.5" Y="3.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GoogleMediaHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UTMGeneratorLibrary.VKontakteTargetHelper">
+    <Position X="3" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAACAAAAAAAAAAADAAAAAAAAAAAIAgAAAA=</HashCode>
+      <FileName>VKontakteTargetHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="UTMGeneratorLibrary.SourcesTypes">

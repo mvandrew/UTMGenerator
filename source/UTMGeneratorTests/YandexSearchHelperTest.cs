@@ -1,10 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using UTMGeneratorLibrary;
 
 namespace UTMGeneratorTests
@@ -13,10 +9,12 @@ namespace UTMGeneratorTests
     public class YandexSearchHelperTest
     {
         [Test]
-        public void TestSiteURL_http()
+        public void YA_TestSiteURL_http()
         {
-            YandexSearchHelper yaHelper = new YandexSearchHelper();
-            yaHelper.SiteURL = @"http://site.ru";
+            YandexSearchHelper yaHelper = new YandexSearchHelper
+            {
+                SiteURL = @"http://site.ru"
+            };
 
             Regex rg = new Regex(@"^http:\/\/");
             if (rg.IsMatch(yaHelper.SiteURL))
@@ -26,7 +24,7 @@ namespace UTMGeneratorTests
         }
 
         [Test]
-        public void TestSiteURL_https()
+        public void YA_TestSiteURL_https()
         {
             YandexSearchHelper yaHelper = new YandexSearchHelper();
             yaHelper.SiteURL = @"https://site.ru";
@@ -39,7 +37,7 @@ namespace UTMGeneratorTests
         }
 
         [Test]
-        public void TestSiteURL_NoProtocol()
+        public void YA_TestSiteURL_NoProtocol()
         {
             YandexSearchHelper yaHelper = new YandexSearchHelper();
             yaHelper.SiteURL = @"site.ru";
@@ -52,7 +50,7 @@ namespace UTMGeneratorTests
         }
 
         [Test]
-        public void TestSiteURL_HostName()
+        public void YA_TestSiteURL_HostName()
         {
             YandexSearchHelper yaHelper = new YandexSearchHelper();
             yaHelper.SiteURL = @"https://site.ru/questions/11717707/best-way-to-split-a-string-without-a-separator?noredirect=1&lq=1";
@@ -64,7 +62,7 @@ namespace UTMGeneratorTests
         }
 
         [Test]
-        public void TestSiteURL_ClearURL()
+        public void YA_TestSiteURL_ClearURL()
         {
             YandexSearchHelper yaHelper = new YandexSearchHelper();
             string baseURL = @"https://site.ru/index.html";
@@ -91,7 +89,7 @@ namespace UTMGeneratorTests
         }
 
         [Test]
-        public void TestSiteURL_URLArguments()
+        public void YA_TestSiteURL_URLArguments()
         {
             YandexSearchHelper yaHelper = new YandexSearchHelper();
             string baseURL = @"https://site.ru/index.html";
@@ -134,7 +132,7 @@ namespace UTMGeneratorTests
         }
 
         [Test]
-        public void TestSiteURL_URLAnchor()
+        public void YA_TestSiteURL_URLAnchor()
         {
             YandexSearchHelper yaHelper = new YandexSearchHelper();
             string baseURL = @"https://site.ru/index.html";
@@ -177,7 +175,7 @@ namespace UTMGeneratorTests
         }
 
         [Test]
-        public void Test_Transliterate()
+        public void YA_Test_Transliterate()
         {
             YandexSearchHelper yaHelper = new YandexSearchHelper();
 

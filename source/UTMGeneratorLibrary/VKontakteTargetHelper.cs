@@ -3,54 +3,51 @@
 namespace UTMGeneratorLibrary
 {
     /// <summary>
-    /// Google AdWords search traffic
+    /// VKontakte Target & Social traffic
     /// </summary>
-    /// <remarks>https://support.google.com/adwords/answer/6305348?authuser=1</remarks>
-    public class GoogleSearchHelper : GeneratorHelper
+    public class VKontakteTargetHelper : GeneratorHelper
     {
         /// <summary>
         /// Return default UTM Source value
         /// </summary>
-        /// <value>Default value is "google" and network type</value>
+        /// <value>Default value is "vkontakte"</value>
         public override string Default_UTMSource
         {
-            get { return @"google"; }
+            get { return "vkontakte"; }
         }
 
         /// <summary>
         /// Return default UTM Campaign value
         /// </summary>
-        /// <value>Default value is Google AdWords Campaign ID.</value>
+        /// <value>Instead of {campaign_id} VKontakte will automatically substitute the ad campaign ID.</value>
         public override string Default_UTMCampaign
         {
-            get { return @"{campaignid}|{network}"; }
+            get { return @"{campaign_id}"; }
         }
 
         /// <summary>
         /// Return default UTM Content value
         /// </summary>
-        /// <value>Default value is Google AdWords group ID and Ads ID.</value>
+        /// <value>Instead of {ad_id} VKontakte will automatically substitute the ad ID.</value>
         public override string Default_UTMContent
         {
-            get { return @"{adgroupid}|{creative}"; }
+            get { return @"{ad_id}"; }
         }
 
         /// <summary>
-        /// Return default UTM Term value.
+        /// Return default UTM Term value
         /// </summary>
-        /// <value>Default value is current keyword value template.</value>
         public override string Default_UTMTerm
         {
-            get { return @"{keyword}"; }
+            get { return ""; }
         }
 
         /// <summary>
         /// Return default UTM Additional tags value
         /// </summary>
-        /// <value>Default value is additional tags: ads position.</value>
         public override string Default_UTMAdditional
         {
-            get { return @"&utm_position={adposition}"; }
+            get { return ""; }
         }
 
         /// <summary>
@@ -73,13 +70,11 @@ namespace UTMGeneratorLibrary
         /// <summary>
         /// Process additional template name
         /// </summary>
-        /// <remarks>https://support.google.com/adwords/answer/6305348?authuser=1</remarks>
         /// <param name="additionalTemplateName">Value from the collection AdditionalTemplatesList</param>
         /// <returns>Additional UTM Tags</returns>
         /// <see cref="AdditionalTemplatesList"/>
         public override string getUTMAdditionalValue(string additionalTemplateName)
         {
-
             string result = "";
 
             int templateIndex = Array.IndexOf(AdditionalTemplatesList, additionalTemplateName);

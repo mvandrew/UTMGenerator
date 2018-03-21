@@ -54,6 +54,9 @@ namespace UTMGenerator
                 case SourcesTypes.GOOGLE_MEDIA:
                     rbGoogleKMS.Checked = true;
                     break;
+                case SourcesTypes.VK_TARGET:
+                    rbVK.Checked = true;
+                    break;
             }
 
             tbUTMSource.Text = settings.UTMSource;
@@ -67,6 +70,42 @@ namespace UTMGenerator
             cbSlashPlace.Checked = settings.SlashPlace;
 
             tbURL.Text = settings.SiteURL;
+        }
+
+        /// <summary>
+        /// Defines the traffic source type template
+        /// </summary>
+        private void responseMedium()
+        {
+            int valIndex;
+
+            switch (tbUTMMedium.Text)
+            {
+                case "organic":
+                    valIndex = 1;
+                    break;
+                case "cpc":
+                    valIndex = 2;
+                    break;
+                case "email":
+                    valIndex = 3;
+                    break;
+                case "social":
+                    valIndex = 4;
+                    break;
+                case "banner":
+                    valIndex = 5;
+                    break;
+                case "cpa":
+                    valIndex = 6;
+                    break;
+                default:
+                    valIndex = 0;
+                    break;
+            }
+
+            if (valIndex != cbUTMMedium.SelectedIndex)
+                cbUTMMedium.SelectedIndex = valIndex;
         }
 
         private void llYandexDirect_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -146,6 +185,7 @@ namespace UTMGenerator
             else if (rbYandexRSYA.Checked) { generatorHelper = new YandexMediaHelper(); }
             else if (rbGoogleAdWords.Checked) { generatorHelper = new GoogleSearchHelper(); }
             else if (rbGoogleKMS.Checked) { generatorHelper = new GoogleMediaHelper(); }
+            else if (rbVK.Checked) { generatorHelper = new VKontakteTargetHelper(); }
             else { generatorHelper = null; }
 
             // Set default field values
@@ -224,6 +264,7 @@ namespace UTMGenerator
             else if (rbYandexRSYA.Checked) { result = SourcesTypes.YANDEX_MEDIA; }
             else if (rbGoogleAdWords.Checked) { result = SourcesTypes.GOOGLE_SEARCH; }
             else if (rbGoogleKMS.Checked) { result = SourcesTypes.GOOGLE_MEDIA; }
+            else if (rbVK.Checked) { result = SourcesTypes.VK_TARGET; }
 
             return result;
         }
@@ -282,6 +323,8 @@ namespace UTMGenerator
         {
             if (generatorHelper != null)
                 generatorHelper.UTMMedium = tbUTMMedium.Text;
+
+            responseMedium();
         }
 
         private void tbUTMCampaign_TextChanged(object sender, EventArgs e)
@@ -350,6 +393,37 @@ namespace UTMGenerator
         private void llGoogleAdWordsTemplates_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start(@"https://support.google.com/adwords/answer/6305348");
+        }
+
+        /// <summary>
+        /// Processing the selection of the traffic source type template
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cbUTMMedium_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox senderElement = (ComboBox)sender;
+
+            if (senderElement.SelectedIndex > 0 && senderElement.SelectedIndex < 7)
+            {
+                string[] sources = {
+                    "organic",
+                    "cpc",
+                    "email",
+                    "social",
+                    "banner",
+                    "cpa"
+                };
+                string newVal = sources[senderElement.SelectedIndex - 1];
+                if (newVal != tbUTMMedium.Text)
+                    tbUTMMedium.Text = newVal;
+            }
+            
+        }
+
+        private void rbVK_CheckedChanged(object sender, EventArgs e)
+        {
+            targetSystemChanged();
         }
     }
 }
